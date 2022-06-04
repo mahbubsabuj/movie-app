@@ -11,6 +11,11 @@ export interface IDate {
   minimum: Date;
 }
 
+export interface IGenre {
+  id: number;
+  name: string;
+}
+
 export interface IMovie {
   adult: boolean;
   backdrop_path: string;
@@ -26,4 +31,27 @@ export interface IMovie {
   video: boolean;
   vote_average: number;
   vote_count: number;
+  revenue?: number
+  runtime?: number;
+  genres?: IGenre[];
+  status?: string;
+}
+
+
+export interface IVideo {
+  id: number;
+  results: IVideoItems[];
+}
+
+export interface IVideoItems {
+  id: string;
+  iso_639_1: string;
+  iso_3166_1: string;
+  key: string;
+  name: string;
+  official: boolean;
+  published_at: Date;
+  site: string;
+  size: number;
+  type: string;
 }

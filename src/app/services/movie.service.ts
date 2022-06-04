@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable, of, switchMap } from 'rxjs';
-import { IMovieRoot, IMovie } from '../models/movie.model';
+import { IMovieRoot, IMovie, IVideo, IVideoItems } from '../models/movie.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -22,14 +22,26 @@ export class MovieService {
         })
       );
   }
-  getMovie(id: number = 1): Observable<IMovie> {
+  getMovie(id: number): Observable<IMovie> {
     return this.httpClient.get<IMovie>(`${environment.baseURL}/movie/${id}`, {
       params: new HttpParams()
         .set('api_key', environment.API_KEY)
         .set('responseType', 'application/json'),
     });
   }
-  searchMovies(page: number = 1): Observable<IMovie[]> {
+  getMovieVideos(id: number): Observable<IVideoItems[]> {
+    return this.httpClient.get<IVideo>(
+      `${environment.baseURL}/movie/${id}/videos`,
+      {
+        params: new HttpParams()
+          .set('api_key', environment.API_KEY)
+          .set('responseType', 'application/json'),
+      }
+    ).pipe(switchMap((response: IVideo) => {
+      return of(response.results);
+    }));
+  }
+  searchMovies(page: number): Observable<IMovie[]> {
     return this.httpClient
       .get<IMovieRoot>(`${environment.baseURL}/movie/popular`, {
         params: new HttpParams()

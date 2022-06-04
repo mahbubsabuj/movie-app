@@ -1,1 +1,12 @@
 <app-slider *ngIf="movie" [items]="[movie]" [isBanner]="true"></app-slider>
+<p-tabView *ngIf="movie">
+    <p-tabPanel header="Overview">
+       <app-overview [item]="movie"></app-overview>
+    </p-tabPanel>
+    <p-tabPanel header="Videos">
+        <app-videos [id]="movie.id"></app-videos>
+    </p-tabPanel>
+    <p-tabPanel header="Photos">
+        <app-photos></app-photos>
+    </p-tabPanel>
+</p-tabView>

@@ -1,0 +1,7 @@
+<div class="grid">
+  <ng-container *ngFor="let video of videos">
+    <div class="col-12 md:col-4 lg:col-4">
+      <app-video-embed [key]="video.key" [site]="video.site"></app-video-embed>
+    </div>
+  </ng-container>
+</div>

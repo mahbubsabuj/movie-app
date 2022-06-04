@@ -1,0 +1,19 @@
+.poster {
+    max-width: 100%;
+}
+
+.overview {
+    line-height: 1.5;
+}
+
+.stat {
+    display: flex;
+
+    .label {
+        font-weight: bold;
+        width: 150px;
+    }
+    .value {
+        color: rgb(204, 141, 24);
+    }
+}
