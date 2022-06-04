@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { IMovie, IMovieRoot } from 'src/app/models/movie.model';
 import { MovieService } from 'src/app/services/movie.service';
 
@@ -7,7 +7,7 @@ import { MovieService } from 'src/app/services/movie.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   nowPlayingMovies: IMovie[] = [];
   upcomingMovies: IMovie[] = [];
   popularMovies: IMovie[] = [];
@@ -36,5 +36,8 @@ export class HomeComponent implements OnInit {
     this.getMovies('now_playing', 12);
     this.getMovies('popular', 12);
     this.getMovies('top_rated', 12);
+  }
+  ngOnDestroy(): void {
+    
   }
 }

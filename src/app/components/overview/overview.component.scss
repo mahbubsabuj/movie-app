@@ -1,19 +1,26 @@
 .poster {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .overview {
-    line-height: 1.5;
+  line-height: 1.5;
 }
 
 .stat {
-    display: flex;
+  display: flex;
 
-    .label {
-        font-weight: bold;
-        width: 150px;
-    }
-    .value {
-        color: rgb(204, 141, 24);
+  .label {
+    font-weight: bold;
+    width: 150px;
+  }
+  .value {
+    color: rgb(204, 141, 24);
+  }
+}
+
+.actor {
+    padding: 10px;
+    img {
+        width: 100%;
     }
 }
