@@ -13,18 +13,17 @@ export class HomeComponent implements OnInit {
   popularMovies: IMovie[] = [];
   topRatedMovies: IMovie[] = [];
   constructor(private movieService: MovieService) {}
-  getMovies(type: string): void {
-    this.movieService.getMovies(type).subscribe({
-      next: (response: IMovieRoot) => {
+  getMovies(type: string, count: number): void {
+    this.movieService.getMovies(type, count).subscribe({
+      next: (response: IMovie[]) => {
         if (type === 'upcoming') {
-          this.upcomingMovies = response.results;
-          console.log(this.upcomingMovies);
+          this.upcomingMovies = response;
         } else if (type === 'top_rated') {
-          this.topRatedMovies = response.results;
+          this.topRatedMovies = response;
         } else if (type === 'popular') {
-          this.popularMovies = response.results;
+          this.popularMovies = response;
         } else {
-          this.nowPlayingMovies = response.results;
+          this.nowPlayingMovies = response;
         }
       },
       error: (error) => {
@@ -33,9 +32,9 @@ export class HomeComponent implements OnInit {
     })
   }
   ngOnInit(): void {
-    this.getMovies('upcoming');
-    this.getMovies('now_playing');
-    this.getMovies('popular');
-    this.getMovies('top_rated');
+    this.getMovies('upcoming', 12);
+    this.getMovies('now_playing', 12);
+    this.getMovies('popular', 12);
+    this.getMovies('top_rated', 12);
   }
 }

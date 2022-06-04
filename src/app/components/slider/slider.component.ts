@@ -22,15 +22,18 @@ import { IMovie } from 'src/app/models/movie.model';
 })
 export class SliderComponent implements OnInit {
   @Input() items: IMovie[] = [];
+  @Input() isBanner: boolean = false;
   currentSlideIndex: number = 0;
   constructor() {}
 
   ngOnInit(): void {
-    setInterval(() => {
-      ++this.currentSlideIndex;
-      if (this.currentSlideIndex == this.items.length) {
-        this.currentSlideIndex = 0;
-      }
-    }, 5000);
+    if (!this.isBanner) {
+      setInterval(() => {
+        ++this.currentSlideIndex;
+        if (this.currentSlideIndex == this.items.length) {
+          this.currentSlideIndex = 0;
+        }
+      }, 5000);
+    }
   }
 }

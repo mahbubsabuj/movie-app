@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
@@ -12,6 +11,8 @@ import { SliderComponent } from './components/slider/slider.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ItemsBannerComponent } from './components/items-banner/items-banner.component';
 import { ItemComponent } from './components/item/item.component';
+import { PaginatorModule } from 'primeng/paginator';
+import { MovieDetailsComponent } from './pages/movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -23,8 +24,15 @@ import { ItemComponent } from './components/item/item.component';
     SliderComponent,
     ItemsBannerComponent,
     ItemComponent,
+    MovieDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    PaginatorModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

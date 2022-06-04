@@ -1,5 +1,5 @@
 export interface IMovieRoot {
-  date: IDate;
+  date?: IDate;
   page: number;
   results: IMovie[];
   total_pages: number;
