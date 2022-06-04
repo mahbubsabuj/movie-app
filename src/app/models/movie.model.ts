@@ -31,12 +31,11 @@ export interface IMovie {
   video: boolean;
   vote_average: number;
   vote_count: number;
-  revenue?: number
+  revenue?: number;
   runtime?: number;
   genres?: IGenre[];
   status?: string;
 }
-
 
 export interface IVideo {
   id: number;
@@ -54,4 +53,41 @@ export interface IVideoItems {
   site: string;
   size: number;
   type: string;
+}
+
+export interface IMovieImageRoot {
+  id: number;
+  backdrops: IMovieImages[];
+  posters: IMovieImages[];
+}
+
+export interface IMovieImages {
+  aspect_ratio: number;
+  file_path: string;
+  height: number;
+  iso_639_1: string | null;
+  vote_average: number;
+  vote_count: number;
+  width: number;
+}
+
+export interface IMovieCreditsRoot {
+  id: number;
+  cast: IMovieCastCrew[];
+  crew: IMovieCastCrew[];
+}
+
+export interface IMovieCastCrew {
+  adult: boolean;
+  gender: number;
+  id: number;
+  known_for_department: string;
+  name: string;
+  original_name: string;
+  popularity: number;
+  profile_path: string | null;
+  cast_id: number;
+  character: string;
+  credit_id: string;
+  order: number;
 }

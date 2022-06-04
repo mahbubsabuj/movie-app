@@ -7,6 +7,6 @@
         <app-videos [id]="movie.id"></app-videos>
     </p-tabPanel>
     <p-tabPanel header="Photos">
-        <app-photos></app-photos>
+        <app-photos [id] = "movie.id"></app-photos>
     </p-tabPanel>
 </p-tabView>

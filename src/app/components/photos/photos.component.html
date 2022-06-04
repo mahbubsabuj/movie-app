@@ -1,1 +1,8 @@
-<p>photos works!</p>
+
+<div>
+    <p-carousel [value]="images" *ngIf="images">
+        <ng-template let-image pTemplate="image">
+            <img src="https://images.tmdb.org/t/p/w780/{{image.file_path}}"/>
+        </ng-template>
+    </p-carousel>
+</div>

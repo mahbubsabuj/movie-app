@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, of, switchMap } from 'rxjs';
-import { IMovieRoot, IMovie, IVideo, IVideoItems } from '../models/movie.model';
+import {
+  IMovieRoot,
+  IMovie,
+  IVideo,
+  IVideoItems,
+  IMovieImages,
+  IMovieImageRoot,
+  IMovieCastCrew,
+  IMovieCreditsRoot,
+} from '../models/movie.model';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -30,16 +39,43 @@ export class MovieService {
     });
   }
   getMovieVideos(id: number): Observable<IVideoItems[]> {
-    return this.httpClient.get<IVideo>(
-      `${environment.baseURL}/movie/${id}/videos`,
-      {
+    return this.httpClient
+      .get<IVideo>(`${environment.baseURL}/movie/${id}/videos`, {
         params: new HttpParams()
           .set('api_key', environment.API_KEY)
           .set('responseType', 'application/json'),
-      }
-    ).pipe(switchMap((response: IVideo) => {
-      return of(response.results);
-    }));
+      })
+      .pipe(
+        switchMap((response: IVideo) => {
+          return of(response.results);
+        })
+      );
+  }
+  getMoviePhotos(id: number): Observable<IMovieImages[]> {
+    return this.httpClient
+      .get<IMovieImageRoot>(`${environment.baseURL}/movie/${id}/images`, {
+        params: new HttpParams()
+          .set('api_key', environment.API_KEY)
+          .set('resposeType', 'application/json'),
+      })
+      .pipe(
+        switchMap((response: IMovieImageRoot) => {
+          return of(response.backdrops);
+        })
+      );
+  }
+  getMovieCredits(id: number): Observable<IMovieCastCrew[]> {
+    return this.httpClient
+      .get<IMovieCreditsRoot>(`${environment.baseURL}/movie/${id}/credits`, {
+        params: new HttpParams()
+          .set('api_key', environment.API_KEY)
+          .set('resposeType', 'application/json'),
+      })
+      .pipe(
+        switchMap((response: IMovieCreditsRoot) => {
+          return of(response.cast);
+        })
+      );
   }
   searchMovies(page: number): Observable<IMovie[]> {
     return this.httpClient
