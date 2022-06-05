@@ -1,0 +1,12 @@
+<a class="tv-item" *ngIf="item">
+    <div class="tv-item-rating">
+        <i class="app-icon">star</i>
+        <span>{{item.vote_average}}</span>/10
+    </div>
+    <div class="tv-item-image">
+        <img src="https://images.tmdb.org/t/p/w400/{{item.backdrop_path}}" alt="">
+    </div>
+    <div class="tv-item-title">
+        {{item.name}}
+    </div>
+</a>

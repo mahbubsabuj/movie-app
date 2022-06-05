@@ -21,6 +21,8 @@ import { VideoEmbedComponent } from './components/video-embed/video-embed.compon
 import { GalleriaModule } from 'primeng/galleria';
 import { CarouselModule } from 'primeng/carousel';
 import { MovieService } from './services/movie.service';
+import { TvComponent } from './pages/tv/tv.component';
+import { TvItemComponent } from './components/tv-item/tv-item.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,8 @@ import { MovieService } from './services/movie.service';
     PhotosComponent,
     VideosComponent,
     VideoEmbedComponent,
+    TvComponent,
+    TvItemComponent,
   ],
   imports: [
     BrowserModule,
